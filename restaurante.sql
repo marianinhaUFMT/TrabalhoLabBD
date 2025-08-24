@@ -96,3 +96,18 @@ CREATE TABLE pedido (
     FOREIGN KEY (id_restaurante) REFERENCES restaurante(id_restaurante) ON DELETE CASCADE
 );
 
+-- tabela Produtos
+CREATE TABLE IF NOT EXISTS Produtos(
+	produto_id INT AUTO_INCREMENT,
+    estoque INT,
+    nome_produto VARCHAR(64),
+    PRIMARY KEY(produto_id));
+
+-- tabela possui3
+CREATE TABLE IF NOT EXISTS possui3(
+	id_prato INT NOT NULL,
+    produto_id INT NOT NULL,
+    qtd int,
+	FOREIGN KEY (id_prato) REFERENCES pratos(id_prato) ON DELETE CASCADE,
+    FOREIGN KEY (produto_id) REFERENCES Produtos(produto_id) ON DELETE CASCADE
+    );
