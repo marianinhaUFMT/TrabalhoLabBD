@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS HorariosFuncionamentoRestaurante(
     id_rest INT,
 	PRIMARY KEY(horario_funcionamento_id),
     Unique KEY(id_rest, dia_semana),
-	FOREIGN KEY(id_rest) REFERENCES Restaurantes(id_rest)
+	FOREIGN KEY(id_rest) REFERENCES Restaurantes(id_rest) ON DELETE CASCADE
 );
 
 -- tabela categoria pratos
@@ -80,7 +80,7 @@ CREATE TABLE pratos (
     preco DECIMAL(10, 2) NOT NULL,
     status_disp BOOLEAN DEFAULT TRUE, -- true = disponivel, false = indisponivel
     PRIMARY KEY (id_prato),
-    FOREIGN KEY (categoria_id) REFERENCES categoria_pratos(categoria_id) ON DELETE CASCADE,
+    FOREIGN KEY (categoria_id) REFERENCES categoria_pratos(categoria_id) ON DELETE CASCADE
 );
 
 -- tabela pedido
