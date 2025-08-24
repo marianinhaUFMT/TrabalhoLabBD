@@ -50,6 +50,18 @@ CREATE TABLE restaurante (
     FOREIGN KEY (id_endRest) REFERENCES enderecos_restaurante(id_endRest) ON DELETE CASCADE
 );
 
+-- Tabela HorariosFuncionamentoRestaurante
+CREATE TABLE IF NOT EXISTS HorariosFuncionamentoRestaurante(
+    horario_funcionamento_id INT AUTO_INCREMENT,
+    dia_semana ENUM('Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado') NOT NULL,
+    horario_abertura TIME,
+    horario_fechamento TIME,
+    id_rest INT,
+	PRIMARY KEY(horario_funcionamento_id),
+    Unique KEY(id_rest, dia_semana),
+	FOREIGN KEY(id_rest) REFERENCES Restaurantes(id_rest)
+);
+
 -- tabela categoria pratos
 CREATE TABLE categoria_pratos (
     categoria_id INT AUTO_INCREMENT,
